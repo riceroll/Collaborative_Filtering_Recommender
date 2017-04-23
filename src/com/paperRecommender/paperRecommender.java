@@ -80,6 +80,7 @@ public class paperRecommender {
     }
 
     private static void Hex2Dec(String inFileName,String inFileNameDec) {
+//        convert a file including ID in Hex to Dec
         try {
             File inFile=new File(inFileName);
             File outFile=new File(inFileNameDec);
@@ -105,6 +106,7 @@ public class paperRecommender {
     }
 
     private static void Dec2Hex(String outFileNameDec,String outFileName) {
+//        convert a file including ID in Dec to Hex
         try {
             File inFile=new File(outFileNameDec);
             File outFile=new File(outFileName);
