@@ -1,0 +1,11 @@
+Code:
+	The core code is in ./src/com/paperRecommender/paperRecommender.java
+
+Data:
+	Input data should be in CSV format. The structure is as follows:
+		UserID(hexadecimal number),ItemID(hexadecimal number),rating(double)
+	Output data is also in CSV format.
+	There are two sample CSV files in ./data
+
+Quick Start:
+	Change the input file name and out file name in “paperRecommender.java”, and run it.
