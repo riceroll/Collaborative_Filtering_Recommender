@@ -18,12 +18,12 @@ public class paperRecommender {
     public static void main (String[] args){
         try {
 //==========================paths of inFile & outFile===========================
-            String inFileName="/Users/Roll/Desktop/hex.txt";
-            String outFileName="/Users/Roll/Desktop/result.txt";
+            String inFileName="./data/rating_ref_CV.txt";
+            String outFileName="./data/recommend_ref_CV.txt";
 //==============================================================================
 //          temporary files
-            String inFileNameDec="/Users/Roll/Desktop/dec.txt";
-            String outFileNameDec="/Users/Roll/Desktop/result_dec.txt";
+            String inFileNameDec="./data/dec.txt";
+            String outFileNameDec="./data/result_dec.txt";
 
 //          convert inFile from Hex to Dec
             Hex2Dec(inFileName,inFileNameDec);
@@ -90,12 +90,10 @@ public class paperRecommender {
             String line;
             while (inFileBufferedReader.ready()) {
                 line = inFileBufferedReader.readLine();
-
                 String hexItems[] = line.split(",");
                 String decItems[] = new String[3];
-                decItems[0] = String.valueOf(Integer.parseInt(hexItems[0], 16));
-                decItems[1] = String.valueOf(Integer.parseInt(hexItems[1], 16));
-
+                decItems[0] = String.valueOf(Long.parseLong(hexItems[0], 16));
+                decItems[1] = String.valueOf(Long.parseLong(hexItems[1], 16));
                 outFileBufferedWriter.write(decItems[0] + ',' + decItems[1] + ',' + hexItems[2]+'\n');
             }
             outFileBufferedWriter.close();
@@ -117,13 +115,16 @@ public class paperRecommender {
             String line;
             while (inFileBufferedReader.ready()) {
                 line = inFileBufferedReader.readLine();
-                System.out.println(line);
-
                 String decItems[] = line.split(",");
                 String hexItems[] = new String[3];
-                hexItems[0] = String.valueOf(Integer.toHexString(Integer.parseInt(decItems[0])));
-                hexItems[1] = String.valueOf(Integer.toHexString(Integer.parseInt(decItems[1])));
-
+                hexItems[0] = String.valueOf(Long.toHexString(Long.parseLong(decItems[0])));
+                hexItems[1] = String.valueOf(Long.toHexString(Long.parseLong(decItems[1])));
+                while (hexItems[0].length()<8) {
+                    hexItems[0]='0'+hexItems[0];
+                }
+                while (hexItems[1].length()<8) {
+                    hexItems[1]='0'+hexItems[1];
+                }
                 outFileBufferedWriter.write(hexItems[0] + ',' + hexItems[1] + ',' + decItems[2]+'\n');
             }
             outFileBufferedWriter.close();
